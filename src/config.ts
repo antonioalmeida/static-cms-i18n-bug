@@ -2,8 +2,14 @@ import type { Config } from "@staticcms/core";
 
 const config: Config = {
   backend: { name: "git-gateway", branch: "main" },
+  // local_backend: true,
   media_folder: "public/images",
   public_folder: "/images",
+  i18n: {
+    structure: "multiple_folders",
+    locales: ["en", "pt"],
+    default_locale: "en",
+  },
   collections: [
     {
       name: "config",
@@ -125,9 +131,10 @@ const config: Config = {
       slug: "{{slug}}",
       identifier_field: "slug",
       summary: "{{title}}",
+      i18n: true,
       fields: [
         { label: "Slug", name: "slug", widget: "string" },
-        { label: "Title", name: "title", widget: "string" },
+        { label: "Title", name: "title", widget: "string", i18n: true },
         {
           label: "Publish Date",
           name: "date",
@@ -165,7 +172,7 @@ const config: Config = {
             },
           ],
         },
-        { label: "Body", name: "body", widget: "markdown" },
+        { label: "Body", name: "body", widget: "markdown", i18n: true },
       ],
     },
   ],
